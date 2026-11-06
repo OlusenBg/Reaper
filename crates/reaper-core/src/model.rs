@@ -65,7 +65,7 @@ pub struct Package {
     pub explicit: bool,
 }
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord)]
 pub enum DepKind {
     /// Required: removing the target breaks the dependent.
     Hard,

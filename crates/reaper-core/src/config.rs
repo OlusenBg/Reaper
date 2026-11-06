@@ -2,13 +2,25 @@ use serde::Deserialize;
 use std::path::{Path, PathBuf};
 
 /// User configuration, `~/.config/reaper/config.toml`. Every field is optional.
-#[derive(Debug, Clone, Default, Deserialize, PartialEq, Eq)]
+#[derive(Debug, Clone, Deserialize, PartialEq, Eq)]
 #[serde(default)]
 pub struct Config {
+    /// Check for a new Reaper version on launch (asks before updating).
+    pub check_updates: bool,
     /// Packages never suggested for removal.
     pub protected: Vec<String>,
     /// Backends to skip (e.g. `["snap"]`).
     pub disabled_backends: Vec<String>,
+}
+
+impl Default for Config {
+    fn default() -> Self {
+        Self {
+            check_updates: true,
+            protected: Vec::new(),
+            disabled_backends: Vec::new(),
+        }
+    }
 }
 
 #[derive(Debug, thiserror::Error)]
@@ -55,6 +67,16 @@ mod tests {
         let c = Config::parse("protected=[\"linux\"]\ndisabled_backends=[\"snap\"]").unwrap();
         assert_eq!(c.protected, vec!["linux"]);
         assert_eq!(c.disabled_backends, vec!["snap"]);
+        assert!(c.check_updates);
+    }
+
+    #[test]
+    fn update_check_can_be_disabled() {
+        assert!(
+            !Config::parse("check_updates = false")
+                .unwrap()
+                .check_updates
+        );
     }
 
     #[test]
