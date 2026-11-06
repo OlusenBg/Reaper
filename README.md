@@ -9,7 +9,8 @@ git clone https://github.com/OlusenBg/Reaper && cd Reaper
 ./install.sh
 ```
 
-Then just run:
+`install.sh` detects your login shell (fish, zsh or bash) and adds `~/.cargo/bin` to your PATH if needed
+(fish: `~/.config/fish/conf.d/reaper.fish`, using `fish_add_path`). Open a new terminal, then just run:
 
 ```bash
 reaper
