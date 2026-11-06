@@ -1,0 +1,56 @@
+Name            : firefox
+Version         : 130.0-1
+Description     : Fast, Private & Safe Web Browser
+Architecture    : x86_64
+Depends On      : gtk3  libpulse  sh  nss>=3.1
+Optional Deps   : hunspell-en_US: Spell checking, American English
+Required By     : None
+Provides        : None
+Installed Size  : 250.00 MiB
+Install Reason  : Explicitly installed
+
+Name            : gtk3
+Version         : 3.24.43-1
+Description     : GObject-based multi-platform GUI toolkit
+Architecture    : x86_64
+Depends On      : glib2  libx11
+                  cairo
+Optional Deps   : None
+Required By     : firefox
+Provides        : libgtk-3.so=0-64
+Installed Size  : 21.00 MiB
+Install Reason  : Installed as a dependency for another package
+
+Name            : bash
+Version         : 5.2.032-1
+Description     : The GNU Bourne Again shell
+Architecture    : x86_64
+Depends On      : readline  glibc
+Optional Deps   : bash-completion: for tab completion [installed]
+Required By     : firefox
+Provides        : sh
+Installed Size  : 8.00 MiB
+Install Reason  : Explicitly installed
+
+Name            : nss
+Version         : 3.104-1
+Description     : Network Security Services
+Architecture    : x86_64
+Depends On      : glibc
+Optional Deps   : None
+Required By     : firefox
+Provides        : None
+Installed Size  : 4.50 MiB
+Install Reason  : Installed as a dependency for another package
+
+Name            : paru-bin
+Version         : 2.0.4-1
+Description     : Feature packed AUR helper
+Architecture    : x86_64
+Depends On      : git  pacman
+Optional Deps   : None
+Required By     : None
+Provides        : paru
+Installed Size  : 9.00 MiB
+Install Reason  : Explicitly installed
+

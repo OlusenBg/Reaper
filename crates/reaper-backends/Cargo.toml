@@ -1,0 +1,9 @@
+[package]
+name = "reaper-backends"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+reaper-core = { path = "../reaper-core" }
+anyhow.workspace = true
